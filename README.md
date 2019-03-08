@@ -1,2 +1,2 @@
-# concourse-fly.vim
+# concourse-lint.vim
 Vim Plugin for fly
