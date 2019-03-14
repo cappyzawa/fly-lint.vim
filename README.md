@@ -25,11 +25,5 @@ If `g:concouse_lint_no_default_mappings` is not set to `v:true`, this plugin als
 |<Leader>ffp|ForceFormatPipeline|
 
 ## Settings
-If `g:concourse_lint_auto` is set to `v:true`, this plugin also defines following setting.
+If `g:concourse_lint_auto` is set to `v:true`, current buffer is validated automatically(`autocmd BufWritePost`).
 
-```
-augroup concourse_lint
-  autocmd!
-  autocmd BufWritePost *.yml call concourse_lint#validate()
-augroup END
-```
