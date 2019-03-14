@@ -5,13 +5,15 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 function! concourse_lint#validate()
-  let result = s:fly('validate-pipeline', '-c', expand("%"))
-  echo result
+  echo s:fly('validate-pipeline', '-c', expand("%"))
 endfunction
 
 function! concourse_lint#format()
-  let result = s:fly('format-pipeline', '-c', expand("%"))
-  echo result
+  echo s:fly('format-pipeline', '-c', expand("%"))
+endfunction
+
+function! concourse_lint#force_format()
+  s:fly('format-pipeline', '-w', '-c', expand("%"))
 endfunction
 
 function! s:fly(...)
