@@ -9,7 +9,7 @@ function! concourse_lint#validate()
 endfunction
 
 function! concourse_lint#auto_validate()
-  let result = s:fly('validate-pipeline', '-c', expand("%"))
+  let result = s:trim(s:fly('validate-pipeline', '-c', expand("%")))
   if result == 'looks good'
     echo result
     redraw
@@ -34,6 +34,13 @@ function! s:fly(...)
     endfor
     return system('fly' . opts)
   endif
+endfunction
+
+function! s:trim(str) abort
+  let str = a:str
+  let str = substitute(str, '^[ \t\n]\+', '', 'g')
+  let str = substitute(str, '[ \t\n]\+$', '', 'g')
+  return str
 endfunction
 
 let &cpo = s:save_cpo
