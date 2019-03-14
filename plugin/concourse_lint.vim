@@ -34,7 +34,7 @@ endif
 if g:concourse_lint_auto
   augroup concourse_lint
     autocmd!
-    autocmd BufWritePost *.yml call concourse_lint#validate()
+    autocmd BufWritePost *.yml call concourse_lint#auto_validate()
   augroup END
 endif
 

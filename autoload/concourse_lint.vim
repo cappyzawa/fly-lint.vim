@@ -8,6 +8,16 @@ function! concourse_lint#validate()
   echo s:fly('validate-pipeline', '-c', expand("%"))
 endfunction
 
+function! concourse_lint#auto_validate()
+  let result = s:fly('validate-pipeline', '-c', expand("%"))
+  if result == 'looks good'
+    echo result
+    redraw
+  else
+    echo result
+  endif
+endfunction
+
 function! concourse_lint#format()
   echo s:fly('format-pipeline', '-c', expand("%"))
 endfunction
