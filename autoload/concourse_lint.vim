@@ -1,0 +1,30 @@
+" execute fly validate-pipeline or format-pipeline
+" Author: cappyzawa <cappyzawa@yahoo.ne.jp>
+
+let s:save_cpo = &cpo
+set cpo&vim
+
+function! concourse_lint#validate()
+  let result = s:fly('validate-pipeline', '-c', expand("%"))
+  echo result
+endfunction
+
+function! concourse_lint#format()
+  let result = s:fly('format-pipeline', '-c', expand("%"))
+  echo result
+endfunction
+
+function! s:fly(...)
+  if executable('fly')
+    let opts = ''
+    for opt in a:000
+      let opts = opts . ' ' . opt
+    endfor
+    return system('fly' . opts)
+  endif
+endfunction
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
+
+
