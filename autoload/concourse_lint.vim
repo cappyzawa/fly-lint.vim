@@ -23,7 +23,8 @@ function! concourse_lint#format()
 endfunction
 
 function! concourse_lint#force_format()
-  s:fly('format-pipeline', '-w', '-c', expand("%"))
+  echo s:fly('format-pipeline', '-w', '-c', expand("%"))
+  edit!
 endfunction
 
 function! s:fly(...)
