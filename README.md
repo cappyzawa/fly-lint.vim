@@ -24,5 +24,5 @@ If `g:fly_lint_no_default_mappings` is not set to `v:true`, this plugin also def
 |<Leader\>vp|ValidatePipeline|
 |<Leader\>fp|FormatPipeline|
 |<Leader\>ffp|ForceFormatPipeline|
-|<Leader|>ea|EnableAutoValidatePipeline|
+|<Leader\>ea|EnableAutoValidatePipeline|
 
