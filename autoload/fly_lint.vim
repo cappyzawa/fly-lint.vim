@@ -22,7 +22,7 @@ function! fly_lint#enable_auto_validate()
   let g:fly_lint_auto = v:true
   augroup fly_lint
     autocmd!
-    autocmd BufWritePost *.yml call fly_lint#auto_validate()
+    autocmd BufWritePost *.yml,*yaml call fly_lint#auto_validate()
   augroup END
 endfunction
 
