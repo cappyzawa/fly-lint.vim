@@ -1,0 +1,49 @@
+*fly-lint.vim* linting plugin concourse pipeline file
+Author: cappyzawa<cappyzawa@yahoo.ne.jp>
+License: See LICENSE file in this repository
+
+==============================================================================
+CONTENTS						*fly-lint-contents*
+
+Introduction		|fly-lint-introduction|
+Interface			|fly-lint-interface|
+  Variables			|fly-lint-variables|
+  Commands			|fly-lint-commands|
+  Mappings      |fly-lint-mappings|
+==============================================================================
+INTRODUCTION						*fly-lint-introduction*
+
+Support to write concourse pipeline file (e.g. pipeline.yml) using vim!
+If you install this plugin, you will never disappointed again when setting pipeline.
+==============================================================================
+INTERFACE				*fly-lint-interface*
+------------------------------------------------------------------------------
+VARIABLES					*fly-lint-variables*
+                *g:fly_lint_no_default_mapping*
+g:fly_lint_no_default_mapping
+                    (Default: v:false)
+   If this variable is set to v:true, you can disable default key mapping.
+------------------------------------------------------------------------------
+COMMANDS					*fly-lint-commands*
+*:ValidatePipeline*
+  `fly validate-pipeline -c <editing-file>`
+
+*:FormatPipeline*
+  `fly format-pipeline -c <editing-file>`
+
+*:ForceFormatPipeline*
+  `fly format-pipeline -w -c <editing-file>`
+
+*:EnableAutoValidatePipeline*
+  current buffer is validated automatically(`autocmd BufWritePost`)`
+
+------------------------------------------------------------------------------
+MAPPINGS					*fly-lint-mappings*
+*<Leader>vp*
+  ValidatePipeline
+*<Leader>fp*
+  FormatPipeline
+*<Leader>ffp*
+  ForceFormatPipeline
+*<Leader>ea*
+  EnableAutoValidatePipeline
