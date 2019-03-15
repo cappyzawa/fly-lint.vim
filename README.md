@@ -20,10 +20,9 @@ If `g:concouse_lint_no_default_mappings` is not set to `v:true`, this plugin als
 
 |Key|Command|
 |:---:|:---:|
-|<Leader>vp|ValidatePipeline|
-|<Leader>fp|FormatPipeline|
-|<Leader>ffp|ForceFormatPipeline|
+|<Leader\>vp|ValidatePipeline|
+|<Leader\>fp|FormatPipeline|
+|<Leader\>ffp|ForceFormatPipeline|
 
 ## Settings
 If `g:concourse_lint_auto` is set to `v:true`, current buffer is validated automatically(`autocmd BufWritePost`).
-
