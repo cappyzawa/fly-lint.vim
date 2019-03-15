@@ -4,11 +4,11 @@
 let s:save_cpo = &cpo
 set cpo&vim
 
-function! concourse_lint#validate()
+function! fly_lint#validate()
   echo s:fly('validate-pipeline', '-c', expand("%"))
 endfunction
 
-function! concourse_lint#auto_validate()
+function! fly_lint#auto_validate()
   let result = s:trim(s:fly('validate-pipeline', '-c', expand("%")))
   if result == 'looks good'
     echo result
@@ -18,11 +18,19 @@ function! concourse_lint#auto_validate()
   endif
 endfunction
 
-function! concourse_lint#format()
+function! fly_lint#enable_auto_validate()
+  let g:fly_lint_auto = v:true
+  augroup fly_lint
+    autocmd!
+    autocmd BufWritePost *.yml call fly_lint#auto_validate()
+  augroup END
+endfunction
+
+function! fly_lint#format()
   echo s:fly('format-pipeline', '-c', expand("%"))
 endfunction
 
-function! concourse_lint#force_format()
+function! fly_lint#force_format()
   echo s:fly('format-pipeline', '-w', '-c', expand("%"))
   edit!
 endfunction
