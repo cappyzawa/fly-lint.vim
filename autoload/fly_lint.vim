@@ -27,7 +27,7 @@ endfunction
 
 function! fly_lint#disable_auto_validate()
   augroup fly_lint
-    autcmd!
+    autocmd!
   augroup END
 endfunction
 
