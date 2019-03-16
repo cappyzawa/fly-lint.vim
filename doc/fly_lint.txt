@@ -36,6 +36,9 @@ COMMANDS					    *fly-lint-commands*
 *:EnableAutoValidatePipeline*
   current buffer is validated automatically(`autocmd BufWritePost`)`
 
+*:DisableAutoValidatePipeline*
+  disable automatical validation
+
 ------------------------------------------------------------------------------
 MAPPINGS					    *fly-lint-mappings*
 *<Leader>vp*
@@ -46,3 +49,6 @@ MAPPINGS					    *fly-lint-mappings*
   ForceFormatPipeline
 *<Leader>ea*
   EnableAutoValidatePipeline
+*<Leader>da*
+  DisableAutoValidatePipeline
+

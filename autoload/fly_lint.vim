@@ -19,12 +19,18 @@ function! fly_lint#auto_validate()
 endfunction
 
 function! fly_lint#enable_auto_validate()
-  let g:fly_lint_auto = v:true
   augroup fly_lint
     autocmd!
     autocmd BufWritePost *.yml,*yaml call fly_lint#auto_validate()
   augroup END
 endfunction
+
+function! fly_lint#disable_auto_validate()
+  augroup fly_lint
+    autcmd!
+  augroup END
+endfunction
+
 
 function! fly_lint#format()
   echo s:fly('format-pipeline', '-c', expand("%"))
