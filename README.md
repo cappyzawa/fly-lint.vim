@@ -15,7 +15,7 @@ Plug 'cappyzawa/fly-lint.vim'
 |FormatPipeline|`fly format-pipeline -c <editing-file>`|
 |ForceFormatPipeline|`fly format-pipeline -w -c <editing-file>`|
 |EnableAutoValidatePipeline|current buffer is validated automatically(`autocmd BufWritePost`)|
-|DisableAutoValidatePipeline|disable automatical validation(`EnableAutovalidatePipeline`)|
+|DisableAutoValidatePipeline|disable automatical validation(`EnableAutoValidatePipeline`)|
 
 ## Key mappings
 If `g:fly_lint_no_default_mappings` is not set to `v:true`, this plugin also defines following default mapping.
@@ -27,4 +27,3 @@ If `g:fly_lint_no_default_mappings` is not set to `v:true`, this plugin also def
 |<Leader\>ffp|ForceFormatPipeline|
 |<Leader\>ea|EnableAutoValidatePipeline|
 |<Leader\>da|DisableAutoValidatePipeline|
-
