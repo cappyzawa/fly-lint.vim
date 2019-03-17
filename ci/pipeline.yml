@@ -33,12 +33,12 @@ jobs:
   - name: release
     build_logs_to_retain: 20
     plan:
-      - get: repo
+      - get: semver
         passed:
           - bump
         trigger: true
       - put: ghr
         params:
-          name: repo/VERSION
-          tag: repo/VERSION
+          name: semver/version
+          tag: semver/version
           tag_prefix: v
