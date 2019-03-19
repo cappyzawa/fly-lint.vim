@@ -18,7 +18,7 @@ Plug 'cappyzawa/fly-lint.vim'
 |DisableAutoValidatePipeline|disable automatical validation(`EnableAutoValidatePipeline`)|
 
 ## Key mappings
-If `g:fly_lint_no_default_mappings` is not set to `v:true`, this plugin also defines following default mapping.
+If `g:fly_lint_no_default_mappings` is not set to `1`, this plugin also defines following default mapping.
 
 |Key|Command|
 |:---:|:---|

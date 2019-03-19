@@ -24,7 +24,7 @@ nnoremap <silent> <Plug>(enable-auto-validate-pipeline) :<C-u>EnableAutoValidate
 nnoremap <silent> <Plug>(disable-auto-validate-pipeline) :<C-u>DisableAutoValidatePipeline<CR>
 
 if !exists('g:fly_lint_no_default_mapping')
-  let g:fly_lint_no_default_mappings = v:false
+  let g:fly_lint_no_default_mappings = 1
 endif
 if !g:fly_lint_no_default_mappings
   nmap <Leader>vp <Plug>(validate-pipeline)
