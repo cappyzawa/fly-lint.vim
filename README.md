@@ -1,5 +1,5 @@
 # fly-lint.vim
-Vim Plugin for fly
+Vim Plugin to lint concourse pipeline
 
 ## Installation
 To install using [Vim-Plug](https://github.com/junegunn/vim-plug):
