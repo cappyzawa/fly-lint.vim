@@ -6,7 +6,7 @@ resources:
     repository: fly-lint.vim
     access_token: ((github-access-token))
 - name: version
-  type: version
+  type: semver
   source:
     driver: git
     uri: git@github.com:cappyzawa/fly-lint.vim.git
