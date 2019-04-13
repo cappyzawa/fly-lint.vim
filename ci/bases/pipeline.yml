@@ -1,17 +1,17 @@
 ---
 resources:
-  - name: ghr
+  - name: release
     type: github-release
     source:
       owner: cappyzawa
       repository: fly-lint.vim
       access_token: ((github-access-token))
-  - name: semver
-    type: semver
+  - name: version
+    type: version
     source:
       driver: git
       uri: git@github.com:cappyzawa/fly-lint.vim.git
-      branch: master
+      branch: version
       private_key: ((private-key))
       commit_message: "[ci skip] bump version"
       file: VERSION
@@ -22,23 +22,18 @@ resources:
       branch: master
 
 jobs:
-  - name: bump
-    build_logs_to_retain: 20
+#@ for l in ["patch", "minor", "major"]:
+  - name: #@ "{}-release".format(l)
+    build_logs_to_retain: 10
     plan:
-      - get: repo
-        trigger: true
-      - put: semver
+      - aggregate:
+        - get: repo
+        - put: version
+          params:
+            bump: #@ l
+      - put: release
         params:
-          bump: patch
-  - name: release
-    build_logs_to_retain: 20
-    plan:
-      - get: semver
-        passed:
-          - bump
-        trigger: true
-      - put: ghr
-        params:
-          name: semver/version
-          tag: semver/version
+          name: version/version
+          tag: version/version
           tag_prefix: v
+#@ end
