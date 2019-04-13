@@ -1,16 +1,16 @@
 " execute fly validate-pipeline or format-pipeline
 " Author: cappyzawa <cappyzawa@yahoo.ne.jp>
 
-let s:save_cpo = &cpo
-set cpo&vim
+let s:save_cpo = &cpoptions
+set cpoptions&vim
 
 function! fly_lint#validate()
-  echo s:fly('validate-pipeline', '-c', expand("%"))
+  echo s:fly('validate-pipeline', '-c', expand('%'))
 endfunction
 
 function! fly_lint#auto_validate()
-  let result = s:trim(s:fly('validate-pipeline', '-c', expand("%")))
-  if result == 'looks good'
+  let result = s:trim(s:fly('validate-pipeline', '-c', expand('%')))
+  if result ==# 'looks good'
     echo result
     redraw
   else
@@ -33,11 +33,11 @@ endfunction
 
 
 function! fly_lint#format()
-  echo s:fly('format-pipeline', '-c', expand("%"))
+  echo s:fly('format-pipeline', '-c', expand('%'))
 endfunction
 
 function! fly_lint#force_format()
-  echo s:fly('format-pipeline', '-w', '-c', expand("%"))
+  echo s:fly('format-pipeline', '-w', '-c', expand('%'))
   edit!
 endfunction
 
@@ -58,7 +58,5 @@ function! s:trim(str) abort
   return str
 endfunction
 
-let &cpo = s:save_cpo
+let &cpoptions = s:save_cpo
 unlet s:save_cpo
-
-
