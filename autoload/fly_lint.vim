@@ -8,18 +8,18 @@ let s:all_popup = {'exists': 0}
 let s:floating_window_available = has('nvim') && exists('*nvim_win_set_config')
 
 function! s:validate() abort
-  let cmd = fly_lint#cmd#new()
-  return cmd.run('validate-pipeline', '-c', expand('%'))
+  let l:cmd = fly_lint#cmd#new()
+  return l:cmd.run('validate-pipeline', '-c', expand('%'))
 endfunction
 
 function! s:format() abort
-  let cmd = fly_lint#cmd#new()
-  return cmd.run('format-pipeline', '-c', expand('%'))
+  let l:cmd = fly_lint#cmd#new()
+  return l:cmd.run('format-pipeline', '-c', expand('%'))
 endfunction
 
 function! s:force_format() abort
-  let cmd = fly_lint#cmd#new()
-  return cmd.run('format-pipeline', '-w', '-c', expand('%'))
+  let l:cmd = fly_lint#cmd#new()
+  return l:cmd.run('format-pipeline', '-w', '-c', expand('%'))
 endfunction
 
 function! fly_lint#validate()
