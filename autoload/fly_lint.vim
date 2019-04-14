@@ -8,11 +8,13 @@ let s:all_popup = {'exists': 0}
 let s:floating_window_available = has('nvim') && exists('*nvim_win_set_config')
 
 function! fly_lint#validate()
-  echo s:fly('validate-pipeline', '-c', expand('%'))
+  let cmd = fly_lint#cmd#new()
+  echo cmd.run('validate-pipeline', '-c', expand('%'))
 endfunction
 
 function! fly_lint#auto_validate()
-  let result = s:trim(s:fly('validate-pipeline', '-c', expand('%')))
+  let cmd = fly_lint#cmd#new()
+  let result = cmd.run('validate-pipeline', '-c', expand('%'))
   if result ==# 'looks good'
     echo result
     redraw
@@ -36,7 +38,8 @@ endfunction
 
 
 function! fly_lint#format()
-  let formatted = s:fly('format-pipeline', '-c', expand('%'))
+  let cmd = fly_lint#cmd#new()
+  let formatted = cmd.run('format-pipeline', '-c', expand('%'))
 
   if !s:floating_window_available
     echo formatted
@@ -53,25 +56,9 @@ function! fly_lint#format()
 endfunction
 
 function! fly_lint#force_format()
-  echo s:fly('format-pipeline', '-w', '-c', expand('%'))
+  let cmd = fly_lint#cmd#new()
+  echo cmd.run('format-pipeline', '-w', '-c', expand('%'))
   edit!
-endfunction
-
-function! s:fly(...)
-  if executable('fly')
-    let opts = ''
-    for opt in a:000
-      let opts = opts . ' ' . opt
-    endfor
-    return system('fly' . opts)
-  endif
-endfunction
-
-function! s:trim(str) abort
-  let str = a:str
-  let str = substitute(str, '^[ \t\n]\+', '', 'g')
-  let str = substitute(str, '[ \t\n]\+$', '', 'g')
-  return str
 endfunction
 
 let &cpoptions = s:save_cpo
