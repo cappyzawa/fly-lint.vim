@@ -1,8 +1,8 @@
 " execute fly validate-pipeline or format-pipeline
 " Author: cappyzawa <cappyzawa@yahoo.ne.jp>
 
-let s:save_cpo = &cpoptions
-set cpoptions&vim
+let s:save_cpo = &cpo
+set cpo&vim
 
 let s:all_popup = {'exists': 0}
 let s:floating_window_available = has('nvim') && exists('*nvim_win_set_config')
@@ -61,5 +61,5 @@ function! fly_lint#force_format()
   edit!
 endfunction
 
-let &cpoptions = s:save_cpo
+let &cpo = s:save_cpo
 unlet s:save_cpo

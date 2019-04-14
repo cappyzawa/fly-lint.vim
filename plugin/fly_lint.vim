@@ -7,8 +7,8 @@ endif
 
 let g:loaded_fly_lint = 1
 
-let s:save_cpo = &cpoptions
-set cpoptions&vim
+let s:save_cpo = &cpo
+set cpo&vim
 
 " plugin code is here
 command! -bar ValidatePipeline call fly_lint#validate()
@@ -34,5 +34,5 @@ if !g:fly_lint_no_default_mappings
   nmap <Leader>da <Plug>(disable-auto-validate-pipeline)
 endif
 
-let &cpoptions = s:save_cpo
+let &cpo = s:save_cpo
 unlet s:save_cpo
