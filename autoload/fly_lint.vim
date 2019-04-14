@@ -8,38 +8,38 @@ let s:all_popup = {'exists': 0}
 let s:floating_window_available = has('nvim') && exists('*nvim_win_set_config')
 
 function! s:validate() abort
-  let cmd = fly_lint#cmd#new()
-  return cmd.run('validate-pipeline', '-c', expand('%'))
+  let l:cmd = fly_lint#cmd#new()
+  return l:cmd.run('validate-pipeline', '-c', expand('%'))
 endfunction
 
 function! s:format() abort
-  let cmd = fly_lint#cmd#new()
-  return cmd.run('format-pipeline', '-c', expand('%'))
+  let l:cmd = fly_lint#cmd#new()
+  return l:cmd.run('format-pipeline', '-c', expand('%'))
 endfunction
 
 function! s:force_format() abort
-  let cmd = fly_lint#cmd#new()
-  return cmd.run('format-pipeline', '-w', '-c', expand('%'))
+  let l:cmd = fly_lint#cmd#new()
+  return l:cmd.run('format-pipeline', '-w', '-c', expand('%'))
 endfunction
 
-function! fly_lint#validate()
+function! fly_lint#validate() abort
   echo s:validate()
 endfunction
 
-function! fly_lint#enable_auto_validate()
+function! fly_lint#enable_auto_validate() abort
   augroup fly_lint
     autocmd!
     autocmd BufWritePost *.yml,*yaml call fly_lint#validate()
   augroup END
 endfunction
 
-function! fly_lint#disable_auto_validate()
+function! fly_lint#disable_auto_validate() abort
   augroup fly_lint
     autocmd!
   augroup END
 endfunction
 
-function! fly_lint#format()
+function! fly_lint#format() abort
   let l:formatted = s:format()
 
   if !s:floating_window_available
@@ -56,7 +56,7 @@ function! fly_lint#format()
   let s:all_popup.exists = 1
 endfunction
 
-function! fly_lint#force_format()
+function! fly_lint#force_format() abort
   call s:force_format()
   edit!
 endfunction
