@@ -1,4 +1,6 @@
-let s:popup = {}
+let s:popup = {
+      \ 'window': 0,
+      \ }
 
 function! fly_lint#popup#open(formatted)
   call s:popup.open(a:formatted)
