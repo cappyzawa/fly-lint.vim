@@ -4,6 +4,9 @@
 let s:save_cpo = &cpoptions
 set cpoptions&vim
 
+let s:all_popup = {'exists': 0}
+let s:floating_window_available = has('nvim') && exists('*nvim_win_set_config')
+
 function! fly_lint#validate()
   echo s:fly('validate-pipeline', '-c', expand('%'))
 endfunction
@@ -33,7 +36,20 @@ endfunction
 
 
 function! fly_lint#format()
-  echo s:fly('format-pipeline', '-c', expand('%'))
+  let formatted = s:fly('format-pipeline', '-c', expand('%'))
+
+  if !s:floating_window_available
+    echo formatted
+    return
+  endif
+
+  if s:all_popup.exists
+    call fly_lint#popup#close()
+    let s:all_popup.exists = 0
+    return
+  endif
+  call fly_lint#popup#open(formatted)
+  let s:all_popup.exists = 1
 endfunction
 
 function! fly_lint#force_format()

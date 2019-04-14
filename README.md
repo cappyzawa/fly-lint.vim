@@ -17,6 +17,9 @@ Plug 'cappyzawa/fly-lint.vim'
 |EnableAutoValidatePipeline|current buffer is validated automatically(`autocmd BufWritePost`)|
 |DisableAutoValidatePipeline|disable automatical validation(`EnableAutoValidatePipeline`)|
 
+If you use neovim 0.4.0+, you can use floating window when using `FormatPipeline`.  
+The floating window is opened/closed by `FormatPipeline`. 
+
 ## Key mappings
 If `g:fly_lint_no_default_mappings` is not set to `v:true`, this plugin also defines following default mapping.
 
